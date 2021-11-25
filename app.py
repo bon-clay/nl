@@ -1,10 +1,11 @@
 import pygame as pg
+from gui import GUI
 
 
 class App:
 
     def __init__(self):
-        self.screen = pg.display.set_mode((800, 600))
+        self.gui = GUI()
         self.clock = pg.time.Clock()
         self.FPS = 60
 
@@ -16,7 +17,7 @@ class App:
     def run(self):
         while True:
             self.events()
-            self.screen.fill(pg.Color("black"))
+            self.gui.draw_ui()
             self.clock.tick(self.FPS)
 
 if __name__ == "__main__":
