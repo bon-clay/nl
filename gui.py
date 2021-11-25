@@ -8,4 +8,5 @@ class GUI:
 
     def draw_ui(self):
         self.screen.fill(pg.Color("black"))
+        pg.display.update()
 
