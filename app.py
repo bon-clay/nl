@@ -8,6 +8,7 @@ class App:
         self.gui = GUI()
         self.clock = pg.time.Clock()
         self.FPS = 60
+        self.img = pg.Surface((10, 10))
 
     def events(self):
         for e in pg.event.get():
