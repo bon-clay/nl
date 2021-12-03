@@ -12,10 +12,13 @@ class GUI:
     def show_image(self, image):
         self.picture_box.show_image(image)
 
-    def draw_ui(self):
-        self.screen.fill(pg.Color("black"))
+    def render_picture_box(self):
         pb_x = self.screen.get_width() - self.picture_box.get_width() - 10
         pb_y = self.screen.get_height() - self.picture_box.get_height() - 10
         self.screen.blit(self. picture_box, (pb_x, pb_y))
+
+    def draw_ui(self):
+        self.screen.fill(pg.Color("black"))
+        self.render_picture_box()
         pg.display.update()
 
