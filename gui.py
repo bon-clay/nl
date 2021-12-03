@@ -1,5 +1,6 @@
 import pygame as pg
 from picture_box import PictureBox
+from button import Button
 
 
 class GUI:
@@ -9,13 +10,20 @@ class GUI:
         pb_size = self.screen.get_width() // 5
         self.picture_box = PictureBox((pb_size, pb_size))
 
+        self.start_button = Button(100, 100, 100, 50, "Start",
+                "start_button_event")
+
     def show_image(self, image):
         self.picture_box.show_image(image)
 
-    def draw_ui(self):
-        self.screen.fill(pg.Color("black"))
+    def render_picture_box(self):
         pb_x = self.screen.get_width() - self.picture_box.get_width() - 10
         pb_y = self.screen.get_height() - self.picture_box.get_height() - 10
         self.screen.blit(self. picture_box, (pb_x, pb_y))
+
+    def draw_ui(self):
+        self.screen.fill(pg.Color("black"))
+        self.render_picture_box()
+        self.start_button.draw(self.screen)
         pg.display.update()
 
