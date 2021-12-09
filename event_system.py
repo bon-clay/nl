@@ -13,6 +13,10 @@ class Event:
         self.subs.remove(sub)
 
     def invoke(self, *args, **kwargs):
+        output = kwargs["output"]
+        message = kwargs["message"]
+        if output is None and isinstance(output, IOutput):
+            output.message(message)
         for sub in self.subs:
             sub.update_event(*args, **kwargs)
 
@@ -39,7 +43,6 @@ class EventSystem():
                     handler.mouse_handle(event, mouse_pos)
 
     def subscribe(self, event_type, sub):
-
         EventSystem.event_types[event_type].subscribe(sub)
 
     def unsubscribe(event_type, sub):
@@ -54,4 +57,4 @@ class EventSystem():
         return cls.instance
 
 
-event_system_instance = EventSystem()
+event_system_instance = EventSystem(status_bar)

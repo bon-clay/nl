@@ -11,11 +11,12 @@ class Button(pg.Rect):
             "pressed": pg.Color("lightblue")
             }
 
-    def __init__(self, x, y, width, height, text, event_type):
+    def __init__(self, x, y, width, height, text, event_type, output=None):
         super().__init__(x, y, width, height)
         self.text = text
         self.event = ES[event_type]
         ES.reg_mouse_handle(self)
+        self.output = output
         self.color = self.colors["normal"]
 
     def mouse_handle(self, event, mouse_pos):
@@ -33,4 +34,4 @@ class Button(pg.Rect):
         pg.draw.rect(display, self.color, self)
 
     def on_click(self):
-        self.event.invoke()
+        self.event.invoke(output=status_bar, message="hello")

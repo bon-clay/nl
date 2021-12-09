@@ -8,6 +8,9 @@ class GUI:
         self.screen = pg.display.set_mode((800, 600))
         pb_size = self.screen.get_width() // 5
         self.picture_box = PictureBox((pb_size, pb_size))
+        self.status_bar = ...
+        self.start_button = Button(..., output=self.status_bar)
+        self.change_bg_color = Button(...)
 
     def show_image(self, image):
         self.picture_box.show_image(image)
